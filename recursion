@@ -1,0 +1,45 @@
+package recfun
+
+object Main {
+  def main(args: Array[String]) {
+    println("Pascal's Triangle")
+    for (row <- 0 to 10) {
+      for (col <- 0 to row)
+        print(pascal(col, row) + " ")
+      println()
+    }
+  }
+
+  /**
+    * Exercise 1
+    */
+  def pascal(c: Int, r: Int): Int = {
+    var result = 1
+    var n = r  // numerator
+    var d = 1  // denominator
+    if (c == 0 || c == r) return result // edge
+    else innerLoop()
+
+    def innerLoop(): Int = {
+      // compute value based on location in current row
+      result = (result * n) / d
+      if (d < c && n > 1) {
+        n = n - 1
+        d = d + 1
+        result = innerLoop()
+      }
+      result
+    }
+    result
+  }
+
+  /**
+   * Exercise 2
+   */
+//    def balance(chars: List[Char]): Boolean = ???
+  
+  /**
+   * Exercise 3
+   */
+//    def countChange(money: Int, coins: List[Int]): Int = ???
+  }
